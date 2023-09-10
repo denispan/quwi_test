@@ -32,7 +32,7 @@ export default {
             password: this.password
           }
         });
-        await this.$router.push('/'); // перенаправляем пользователя на главную страницу после успешной авторизации
+        await this.$router.push('/');
       } catch (error) {
         console.error('Ошибка авторизации:', error);
       }

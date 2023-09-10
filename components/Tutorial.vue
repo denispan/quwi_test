@@ -13,8 +13,9 @@ export default {
   name: 'NuxtTutorial',
   methods: {
     // Метод для выхода из системы
-    logout() {
-      this.$auth.logout();
+    async logout() {
+      await this.$auth.logout();
+      await this.$router.push('/login');
     }
   }
 }
