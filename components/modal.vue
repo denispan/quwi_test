@@ -1,7 +1,12 @@
 <template>
   <div v-if="project" class="modal" @click="closeModal">
     <div class="modal-content" @click.stop>
-      <h2>{{ project.name }}</h2>
+      <div class="project-name">
+        <h2 v-if="!isEditing">{{ project.name }}</h2>
+        <input v-if="isEditing" v-model="editedName" @keyup.enter="saveChanges" />
+        <button @click="toggleEdit">{{ isEditing ? 'Отменить' : 'Редактировать' }}</button>
+        <button v-if="isEditing" @click="saveChanges">Сохранить</button>
+      </div>
       <p v-if="project.is_active === 1">Active</p>
       <button @click="closeModal">Закрыть</button>
     </div>
@@ -17,11 +22,41 @@ export default {
       default: null
     }
   },
+  data() {
+    return {
+      editedName: '',
+      isEditing: false,
+    };
+  },
   methods: {
     closeModal() {
       this.$emit('close');
+    },
+    toggleEdit() {
+      this.isEditing = !this.isEditing;
+
+      // Когда начинаем редактирование, устанавливаем редактируемое имя как текущее имя проекта
+      if (this.isEditing) {
+        this.editedName = this.project.name;
+      }
+    },
+    async saveChanges() {
+      if (this.editedName) {
+        try {
+          await this.$axios.$post(`projects-manage/update?id=${this.project.id}`, {
+            'name': this.editedName
+          });
+        } catch (error) {
+          console.error("Ошибка при редактировании имени проекта:", error);
+        }
+
+        // Временно применяем редактируемое имя к проекту
+        this.project.name = this.editedName;
+        this.$emit('update-name', this.project.id, this.editedName);
+        this.isEditing = false;
+      }
     }
-  }
+  },
 }
 </script>
 

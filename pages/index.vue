@@ -8,7 +8,7 @@
     </ul>
 
     <button @click="logout">Выйти</button>
-    <Modal :project="selectedProject" @close="selectedProject = null" />
+    <Modal :project="selectedProject" @close="selectedProject = null" @update-name="updateProjectName" />
   </div>
 </template>
 
@@ -51,6 +51,12 @@ export default {
     },
     showModalWithProject(project) {
       this.selectedProject = project;
+    },
+    updateProjectName(projectId, newName) {
+      const project = this.projects.find(p => p.id === projectId);
+      if (project) {
+        project.name = newName;
+      }
     },
   }
 }
