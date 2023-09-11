@@ -1,6 +1,6 @@
 export default {
   head: {
-    title: 'quwi-test',
+    title: 'Qui wi',
     htmlAttrs: {
       lang: 'en'
     },
@@ -13,7 +13,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
-  css: ['~/assets/styles/main.css'],
+  css: ['~/assets/styles/main.scss'],
 
   plugins: [],
 
