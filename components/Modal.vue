@@ -2,13 +2,13 @@
   <transition name="modal-fade">
   <div v-if="project" class="modal" @click="closeModal">
     <div class="modal-content" @click.stop>
-      <div class="project-name">
-        <h2 v-if="!isEditing">{{ project.name }}</h2>
-        <input v-if="isEditing" v-model="editedName" @keyup.enter="saveChanges" />
-        <button @click="toggleEdit">{{ isEditing ? 'Отменить' : 'Редактировать' }}</button>
-        <button v-if="isEditing" @click="saveChanges">Сохранить</button>
+      <button class="btn btn--secondary modal__close" @click="closeModal">Закрыть</button>
+      <div class="modal__edit-name">
+        <h2 class="modal__project-title" v-if="!isEditing">{{ project.name }}</h2>
+        <input class="modal__input" v-if="isEditing" v-model="editedName" @keyup.enter="saveChanges" />
+        <button class="btn btn--secondary" @click="toggleEdit">{{ isEditing ? 'Отменить' : 'Редактировать название проекта' }}</button>
+        <button class="btn btn--primary" v-if="isEditing" @click="saveChanges">Сохранить</button>
       </div>
-      <button @click="closeModal">Закрыть</button>
     </div>
   </div>
   </transition>
@@ -82,10 +82,49 @@ export default {
 }
 
 .modal-content {
+  position: relative;
   background: #fff;
-  padding: 20px;
+  min-width: 30%;
+  text-align: center;
   border-radius: 5px;
   width: 400px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 5rem;
+}
+
+.modal__close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  border: none;
+}
+
+.modal__edit-name {
+  height: 100%;
+}
+
+.modal__project-title {
+  margin-bottom: 2rem;
+}
+
+.modal__input {
+  max-width: 200px;
+  font-size: 1rem;
+  border: 1px solid #E0E0E0;
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  align-self: center;
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: #B0B0B0;
+  }
+
+  &:focus {
+    border-color: #666666;
+    outline: none;
+    box-shadow: 0 0 3px rgba(102,102,102,0.5);
+  }
 }
 </style>
