@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Project from '~/components/project';
+import Project from '~/components/Project';
 
 export default {
   name: 'ProjectsList',
