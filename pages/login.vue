@@ -51,11 +51,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 .login {
-  min-height: 100vh;
   padding-top: 20%;
+
+  @include vp-767 {
+    padding: 20% 2rem 0;
+  }
 }
 
 .login__container {
@@ -70,6 +73,10 @@ export default {
   border-radius: 1rem;
   color: #333333;
   background-color: #F7F7F7;
+
+  @include vp-767 {
+    padding: 2rem;
+  }
 }
 
 .login__title {
@@ -86,7 +93,7 @@ export default {
 .login__input-field {
   display: flex;
   gap: 2rem;
-  justify-content: start;
+  justify-content: flex-start;
   vertical-align: center;
   margin: 0 auto;
 
@@ -95,6 +102,10 @@ export default {
     width: 120px;
     text-align: end;
     align-self: center;
+
+    @include vp-767 {
+      width: 80px;
+    }
   }
 
   input {
@@ -120,7 +131,11 @@ export default {
 
 .login__button {
   width: 60%;
-  margin: 1rem auto 0;
+  margin: 0 auto;
+
+  @include vp-767 {
+    width: 40%;
+  }
 }
 
 .login__error {

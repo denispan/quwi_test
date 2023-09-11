@@ -1,4 +1,5 @@
 <template>
+  <transition name="modal-fade">
   <div v-if="project" class="modal" @click="closeModal">
     <div class="modal-content" @click.stop>
       <div class="project-name">
@@ -10,8 +11,8 @@
       <p v-if="project.is_active === 1">Active</p>
       <button @click="closeModal">Закрыть</button>
     </div>
-
   </div>
+  </transition>
 </template>
 
 <script>
@@ -35,7 +36,6 @@ export default {
     toggleEdit() {
       this.isEditing = !this.isEditing;
 
-      // Когда начинаем редактирование, устанавливаем редактируемое имя как текущее имя проекта
       if (this.isEditing) {
         this.editedName = this.project.name;
       }
@@ -50,7 +50,6 @@ export default {
           console.error("Ошибка при редактировании имени проекта:", error);
         }
 
-        // Временно применяем редактируемое имя к проекту
         this.project.name = this.editedName;
         this.$emit('update-name', this.project.id, this.editedName);
         this.isEditing = false;
@@ -61,6 +60,16 @@ export default {
 </script>
 
 <style scoped>
+
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.5s;
+}
+.modal-fade-enter,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+
 .modal {
   position: fixed;
   top: 0;

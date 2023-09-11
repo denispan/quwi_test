@@ -23,8 +23,13 @@ export default {
 
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    '@nuxtjs/style-resources'
   ],
+
+  styleResources: {
+    scss: ['./assets/styles/mixins.scss']
+  },
 
   axios: {
     baseURL:  'https://api.quwi.com/v2/'
@@ -41,10 +46,10 @@ export default {
         tokenType: 'Bearer'
       },
       redirect: {
-        login: '/login', // пользователь будет перенаправлен на эту страницу, если попытается получить доступ к защищенной странице и он не аутентифицирован
-        logout: '/', // куда перенаправлять после выхода
+        login: '/login',
+        logout: '/',
         callback: '/login',
-        home: '/' // куда перенаправлять после успешного входа
+        home: '/'
       }
     }
   },
