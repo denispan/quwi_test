@@ -8,7 +8,6 @@
         <button @click="toggleEdit">{{ isEditing ? 'Отменить' : 'Редактировать' }}</button>
         <button v-if="isEditing" @click="saveChanges">Сохранить</button>
       </div>
-      <p v-if="project.is_active === 1">Active</p>
       <button @click="closeModal">Закрыть</button>
     </div>
   </div>
