@@ -1,5 +1,4 @@
 <template>
-  <transition name="modal-fade">
   <div v-if="project" class="modal" @click="closeModal">
     <div class="modal-content" @click.stop>
       <div class="project-name">
@@ -12,7 +11,6 @@
       <button @click="closeModal">Закрыть</button>
     </div>
   </div>
-  </transition>
 </template>
 
 <script>
@@ -60,16 +58,6 @@ export default {
 </script>
 
 <style scoped>
-
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-  transition: opacity 0.5s;
-}
-.modal-fade-enter,
-.modal-fade-leave-to {
-  opacity: 0;
-}
-
 .modal {
   position: fixed;
   top: 0;
