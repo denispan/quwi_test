@@ -1,0 +1,54 @@
+@font-face {
+  font-style: normal;
+  font-weight: 300;
+  font-family: "Roboto Condensed";
+
+  font-display: swap;
+  src:
+    url("../fonts/roboto-condensed-300.woff2") format("woff2"),
+    url("../fonts/roboto-condensed-300.woff") format("woff");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  font-family: "Roboto Condensed";
+
+  font-display: swap;
+  src:
+    url("../fonts/roboto-condensed-regular.woff2") format("woff2"),
+    url("../fonts/roboto-condensed-regular.woff") format("woff");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  font-family: "Roboto Condensed";
+
+  font-display: swap;
+  src:
+    url("../fonts/roboto-condensed-700.woff2") format("woff2"),
+    url("../fonts/roboto-condensed-700.woff") format("woff");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+html {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: "Roboto Condensed", "Arial", sans-serif;;
+  color: #030a1a;
+}
